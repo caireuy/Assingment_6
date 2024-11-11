@@ -14,7 +14,7 @@ from enum import Enum
 
 VALID_AMORTIZATION = {5, 10, 15, 20, 25, 30}
 
-def MortageRate(Enum):
+def MortgageRate(Enum):
     """
     Represents the Mortage rate values
     """
