@@ -18,7 +18,10 @@ class Mortgage:
     """
 
     ##__INIT__
-    def __init__(self, loan_amount: float, rate: str, frequency: str, amortization: int):
+    def __init__(self, loan_amount: float,
+                rate: str, 
+                frequency: str, 
+                amortization: int):
         """
         Initialize Mortgage validation with attributes: Loan amouunt, rate, frequency, amortization.
 
@@ -35,9 +38,10 @@ class Mortgage:
             ValueError: if the amortization is invalid   
         """
         # Loan_amount validation
-        self.__loan_amount = loan_amount
+
         if loan_amount <= 0:
             raise ValueError("Loan Amount must be positive")
+        self.__loan_amount = loan_amount
         
         # Rate Validation
         try:
@@ -51,6 +55,10 @@ class Mortgage:
         except Exception as e:
             raise ValueError("Frequency provided is invalid.")
         
-        #
+        # Amortization Validation
+        self.__amortization = amortization
+        if amortization not in VALID_AMORTIZATION:
+            raise ValueError("Amortization provided is invalid.")
+
 
 

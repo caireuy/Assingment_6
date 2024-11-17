@@ -20,24 +20,24 @@ class MortgageRate(Enum):
     
     Values:
         FIXED_5: Fixed mortgage rate 5th value
-        FIXEED_3: FIxed mortgage rate 3rd value
+        FIXED_3: FIxed mortgage rate 3rd value
         FIXED_1: Fixed mortgage rate 1st value
         VARIABLE_5: 5th  variable for mortgage rate
         VARIABLE_3: 3rd variable for mortgage rate
         VARIABLE_1: 1st variable for mortgage rate     
     """
 
-    FIXED_5: 0.0519
+    FIXED_5 = 0.0519
 
-    FIXED_3: 0.0589
+    FIXED_3 = 0.0589
 
-    FIXED_1: 0.0599 
+    FIXED_1 = 0.0599 
 
-    VARIABLE_5: 0.0649 
+    VARIABLE_5 = 0.0649 
 
-    VARIABLE_3: 0.0669 
+    VARIABLE_3 = 0.0669 
 
-    VARIABLE_1: 0.0679 
+    VARIABLE_1 = 0.0679 
     
     
 class PaymentFrequency(Enum):
@@ -49,9 +49,9 @@ class PaymentFrequency(Enum):
         BI_WEEKLY: Bi-weekly Payment frequency of 26 times a year
         WEEKLY: Weekly payment frequency of 52 times a year
     """
-    MONTHLY: 12
+    MONTHLY = 12
 
-    BI_WEEKLY: 26
+    BI_WEEKLY = 26
 
-    WEEKLY: 52
+    WEEKLY = 52
  
