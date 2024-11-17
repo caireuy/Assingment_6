@@ -40,7 +40,7 @@ class Mortgage:
         # Loan_amount validation
 
         if loan_amount <= 0:
-            raise ValueError("Loan Amount must be positive")
+            raise ValueError("Loan Amount must be positive.")
         self.__loan_amount = loan_amount
         
         # Rate Validation
@@ -60,5 +60,28 @@ class Mortgage:
         if amortization not in VALID_AMORTIZATION:
             raise ValueError("Amortization provided is invalid.")
 
+    ## loan_amount ACCESSOR
+    @property
+    def loan_amount(self):
+        """
+        Accessor for the loan_amount attribute.
+        Returns:
+            float: value of the loan amount
+        """
+        return self.__loan_amount
+    
+    ## loan_amount MUTATOR
+    @loan_amount.setter
+    def loan_amount(self, value: float):
+        """
+        Mutator for loan_amount.
 
+        Arg:
+            value(float): Value of loan amount.
+        Raises:
+            ValueError: If the loan amount value is zero or negative
+        """
+        if value <= 0:
+            raise ValueError("Loan Amount must be positive.")
+        self.__loan_amount = value
 

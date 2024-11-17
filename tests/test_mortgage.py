@@ -32,7 +32,7 @@ class MortgageTests(TestCase):
         with self.assertRaises(ValueError) as context:
                 Mortgage(loan_amount, rate, frequency, amortization)
         # Assert
-        self.assertEqual(str(context.exception), "Loan Amount must be positive")
+        self.assertEqual(str(context.exception), "Loan Amount must be positive.")
         
     # 2
     def test_init_rate_invalid_value(self):
@@ -50,7 +50,7 @@ class MortgageTests(TestCase):
         
          # Assert
         self.assertEqual(expected, str(context.exception))
-       # self.assertEqual(str(context.exception), "Rate provided is invalid.")
+      
         
     
     # 3 
@@ -69,7 +69,7 @@ class MortgageTests(TestCase):
             
           # Assert
         self.assertEqual(expected, str(context.exception))
-        #self.assertEqual(str(context.exception), "Frequency provided is invalid.")
+      
      
     #4
     def test_init_amortization_invalid_value(self):
@@ -101,3 +101,58 @@ class MortgageTests(TestCase):
         self.assertEqual(mortgage._Mortgage__rate, MortgageRate.FIXED_5)
         self.assertEqual(mortgage._Mortgage__frequency, PaymentFrequency.MONTHLY)
         self.assertEqual(mortgage._Mortgage__amortization, amortization)
+
+    """
+  Test Case of Loan Amount Accessor and Mutators.
+  1. Modify the Loan Amount to a negative value and verify results.
+  2. Modify the Loan Amount to zero and verify results.
+  3. Modify the Loan Amount to a positive value and verify results.
+    """
+    #1
+    def test_loan_amount_negative_value(self):
+        # Arrange
+      loan_amount = -10
+      rate = "FIXED_5" 
+      frequency = "BI_WEEKLY"
+      amortization = 10
+       
+      
+
+        # Act
+      with self.assertRaises(ValueError) as context:
+            Mortgage(loan_amount, rate, frequency, amortization)
+        # Assert
+      self.assertEqual(str(context.exception), "Loan Amount must be positive.")
+
+    #2
+    def test_loan_amount_zero_value(self):
+        # Arrange
+      loan_amount = 0
+      rate = "FIXED_5" 
+      frequency = "BI_WEEKLY"
+      amortization = 10
+        # Act
+      with self.assertRaises(ValueError) as context:
+            Mortgage(loan_amount, rate, frequency, amortization)
+        # Assert
+      self.assertEqual(str(context.exception), "Loan Amount must be positive.")
+
+    #3
+    def test_loan_amount_positive_value(self):
+      # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "BI_WEEKLY"
+      amortization = 10
+
+      # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+
+      # Assert
+      self.assertEqual(mortgage._Mortgage__loan_amount, loan_amount)
+
+
+
+
+
+    
