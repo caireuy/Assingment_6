@@ -221,4 +221,38 @@ class MortgageTests(TestCase):
       # Assert
       self.assertEqual(expected_result, str(context.exception))
 
+    """
+    Test case for Amortization Accessor and Mutator
+    1. Modify the Amortization to one of the possible VALID_AMORTIZATION values and verify results.
+    2. Modify the Amortization to a value that is not one of the VALID_AMORTIZATION values and verify results.
+    """
 
+    # 1
+    def test_amortization_valid_amortization_value(self):
+      # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "MONTHLY"
+      amortization = 10
+
+      # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+
+      # Assert
+      self.assertEqual(mortgage._Mortgage__amortization, amortization)
+
+    # 2
+    def test_amortization_invalid_amortization_value(self):
+        # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "MONTHLY"
+      amortization = 40
+
+      expected_result = "Amortization provided is invalid."
+      # Act
+      with self.assertRaises(ValueError) as context:
+            Mortgage(loan_amount, rate, frequency, amortization)
+
+      # Assert
+      self.assertEqual(expected_result, str(context.exception))
