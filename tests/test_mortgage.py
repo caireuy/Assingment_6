@@ -329,4 +329,75 @@ class MortgageTests(TestCase):
         self.assertAlmostEqual(actual_payment, expected_payment)
 
 
+    # Test return __str__
+    """
+    Test case for string representation
+    1. A Test Case involving a Monthly payment.
+    2. A Test Case involving a BiWeekly payment.
+    3. A Test case involving a Weekly payment.
+    """
+
+
+    # 1
+    def test_str_monthly_payment(self):
+      # Arrange
+      loan_amount = 682912.43
+      rate = "FIXED_1"
+      amortization = 30 
+      frequency = "MONTHLY"
     
+
+      expected_result = (
+        "Mortgage Amount: $682,912.43\n"
+        "Rate: 5.99%\n"
+        "Amortization: 30\n"
+        "Frequency: Monthly -- Calculated Payment: $4,090.02"
+      ) 
+      # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+      actual_output = str(mortgage)
+
+      # Assert
+      self.assertEqual(actual_output, expected_result)
+      
+    # 2
+    def test_str_biweekly_payment(self):
+        
+        # Arrange
+      loan_amount = 682912.43
+      rate = "FIXED_1"
+      amortization = 30 
+      frequency = "BI_WEEKLY"
+      expected_result = (
+        "Mortgage Amount: $682,912.43\n"
+        "Rate: 5.99%\n"
+        "Amortization: 30\n"
+        "Frequency: BiWeekly -- Calculated Payment: $1,886.79"
+      ) 
+        
+        # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+      actual_output = str(mortgage)
+        
+        # Assert
+      self.assertEqual(actual_output, expected_result)
+
+    # 3
+    def test_str_weekly_payments(self):
+          
+        # Arrange
+      loan_amount = 682912.43
+      rate = "FIXED_1"
+      amortization = 30 
+      frequency = "WEEKLY"
+      expected_result = (
+        "Mortgage Amount: $682,912.43\n"
+        "Rate: 5.99%\n"
+        "Amortization: 30\n"
+        "Frequency: Weekly -- Calculated Payment: $943.20"
+      ) 
+        # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+      actual_output = str(mortgage)
+        # Assert
+      self.assertEqual(actual_output, expected_result)

@@ -51,7 +51,7 @@ class Mortgage:
         
         # Frequency Validation
         try:
-            self.__frequency = PaymentFrequency[frequency]
+            self.__frequency = PaymentFrequency[frequency.upper()]
         except Exception as e:
             raise ValueError("Frequency provided is invalid.")
         
@@ -188,3 +188,33 @@ class Mortgage:
         M = P * (i * (1 + i)**n) / ((1 + i)**n - 1)
         
         return round(M, 2)
+    
+    # Mortgage representation in __str__
+    def __str__(self):
+        """
+        Returns a string representation of Mortgage object
+        Returns:
+            str: 
+                format: 
+                    Mortgage Amount: loan amount
+                    Rate: mortgage rate value
+                    Amortization: amortization value
+                    Frequency: payment frequency -- Calculated Payment: calculated amount of mortgage
+        """
+       # frequency to string to be able  call frequency in all caps and with dash
+        frequency_to_str = {
+        PaymentFrequency.MONTHLY: "Monthly",
+        PaymentFrequency.BI_WEEKLY: "BiWeekly",
+        PaymentFrequency.WEEKLY: "Weekly",
+    }         
+        if isinstance(self.__frequency, PaymentFrequency):
+            frequency_as_str = frequency_to_str.get(self.__frequency)
+        else:
+            frequency_as_str = str(self.__frequency)   
+
+        return (f"Mortgage Amount: ${self.__loan_amount:,.2f}"
+                + f"\nRate: {self.__rate.value * 100:,.2f}%"
+                + f"\nAmortization: {self.__amortization}"
+                + f"\nFrequency: {frequency_as_str} -- "
+                + f"Calculated Payment: ${self.calculate_payment():,.2f}")
+            
