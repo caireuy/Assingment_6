@@ -87,16 +87,13 @@ class Mortgage:
 
     ## ACCESSOR for Rate
     @property
-    def rate(self,) ->str:
+    def rate(self) ->str:
         """
         Accessor for rate value
         
-        Arg:
-            value(str): value of rate
         Return:
             str: if the value provided is valid
-        Raises:
-            ValueError: If the rate value is invalid
+        
         """
 
         return self.__rate
@@ -104,9 +101,35 @@ class Mortgage:
     ## MUTATOR for Rate
     @rate.setter
     def rate(self, value: str):
+        """
+        Rate value of mortgage
+
+        Arg:
+            value(str): value of rate
+        Raises:
+            ValueError: If the rate value is invalid
+        """
         try:
             self.__rate = MortgageRate[value]
         except Exception as e:
             raise ValueError("Rate provided is invalid.")
 
-            
+    
+    ## ACCESSOR for Frequency
+    @property
+    def frequency(self) -> int:
+        """
+        Accessor for Frequency value
+
+        Returns:
+            str: The number of payments per year string equivalent to enum value.       
+        """
+        return self.__frequency
+    
+    ## MUTATOR for Frequency
+    def frequency(self, value: int):
+        try:
+            self.__frequency = PaymentFrequency[value]
+        except Exception as e:
+            raise ValueError("Frequency provided is invalid.")
+        

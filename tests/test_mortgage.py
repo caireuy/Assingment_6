@@ -186,3 +186,39 @@ class MortgageTests(TestCase):
             Mortgage(loan_amount, rate, frequency, amortization)
       # Assert
       self.assertEqual(expected, str(context.exception))
+
+    """
+    Test case for Frequency Accessor Mutator
+    1. Modify the Frequency to one of the possible PaymentFrequency values and verify results.
+    2. Modify the Frequency to a value that is not of PaymentFrequency enum type and verify results.
+
+    """
+    #1
+    def test_frequency_valid_frequency_value(self):
+      # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "MONTHLY"
+      amortization = 10
+      # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+      # Assert
+      self.assertEqual(mortgage._Mortgage__frequency, PaymentFrequency.MONTHLY)
+
+    #2
+    def test_frequency_invalid_frequency_value(self):
+      # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "YEARLY"
+      amortization = 10
+
+      expected_result = "Frequency provided is invalid."
+      # Act
+      with self.assertRaises(ValueError) as context:
+            Mortgage(loan_amount, rate, frequency, amortization)
+      
+      # Assert
+      self.assertEqual(expected_result, str(context.exception))
+
+
