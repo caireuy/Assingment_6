@@ -256,3 +256,77 @@ class MortgageTests(TestCase):
 
       # Assert
       self.assertEqual(expected_result, str(context.exception))
+
+      """
+      Test case for calculate_payment
+      1. Example test
+      2. Low Interest
+      3. Frequency BiWeekly
+      4. Amortization 30
+      
+      """
+    def test_calculate_payment_example_test(self):
+        # Arrange
+        loan_amount = 682912.43
+        rate = "FIXED_1"
+        frequency = "MONTHLY"
+        amortization = 10 
+
+        expected_payment= 7578.30 
+
+        # Act
+        mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+        actual_payment = mortgage.calculate_payment()
+        # Assert
+        self.assertAlmostEqual(actual_payment, expected_payment)
+
+    def test_calculate_payment_low_interest(self):
+          # Arrange
+        loan_amount = 682912.43
+        rate = "FIXED_5"
+        frequency = "MONTHLY"
+        amortization = 10 
+
+        expected_payment= 7306.93
+          # Act
+        mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+        actual_payment = mortgage.calculate_payment()
+          # Assert
+        self.assertAlmostEqual(actual_payment, expected_payment)
+
+
+    def test_calculate_payment_frequency_biweekly(self):
+          # Arrange
+        loan_amount = 682912.43
+        rate = "FIXED_5"
+        frequency = "BI_WEEKLY"
+        amortization = 10 
+
+        expected_payment= 3369.44
+          # Act
+        mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+        actual_payment = mortgage.calculate_payment()
+          
+          # Assert
+        self.assertAlmostEqual(actual_payment, expected_payment)
+
+   
+
+
+    def test_calculate_payment_amortization_30(self):
+          # Arrange
+        loan_amount = 682912.43
+        rate = "FIXED_1"
+        frequency = "MONTHLY"
+        amortization = 30 
+        
+        expected_payment = 4090.02
+
+          # Act
+        mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+        actual_payment = mortgage.calculate_payment()
+          # Assert
+        self.assertAlmostEqual(actual_payment, expected_payment)
+
+
+    

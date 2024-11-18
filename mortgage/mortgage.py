@@ -167,3 +167,24 @@ class Mortgage:
             raise ValueError("Amortization provided is invalid.")
         
         self.__amortization = value
+
+    # Calculated mortgage payment amount
+    def calculate_payment(self) -> float:
+        """
+        Calculates the Weekly, biWeekly, or Monthly morthgage payment
+
+        Return:
+            float: calculated payment in to two decimal place.
+        Values:
+            P: Loan amount value
+            i: interest rate/payment frequency
+            n: amortization value * payment frequency
+            M: calculation
+        """
+        P = self.loan_amount
+        i = self.rate.value / self.frequency.value
+        n = self.amortization * self.frequency.value
+
+        M = P * (i * (1 + i)**n) / ((1 + i)**n - 1)
+        
+        return round(M, 2)
