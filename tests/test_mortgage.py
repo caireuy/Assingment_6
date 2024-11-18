@@ -1,7 +1,7 @@
 """
 Description: A class used to test the Mortgage class.
-Author: {Student Name}
-Date: {Date}
+Author: Carey Roxas
+Date: November 17, 2024
 Usage: Use the tests encapsulated within this class to test the MortgagePayment class.
 """
 
