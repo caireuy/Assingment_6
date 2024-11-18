@@ -103,10 +103,10 @@ class MortgageTests(TestCase):
         self.assertEqual(mortgage._Mortgage__amortization, amortization)
 
     """
-  Test Case of Loan Amount Accessor and Mutators.
-  1. Modify the Loan Amount to a negative value and verify results.
-  2. Modify the Loan Amount to zero and verify results.
-  3. Modify the Loan Amount to a positive value and verify results.
+    Test Case of Loan Amount Accessor and Mutators.
+    1. Modify the Loan Amount to a negative value and verify results.
+    2. Modify the Loan Amount to zero and verify results.
+    3. Modify the Loan Amount to a positive value and verify results.
     """
     #1
     def test_loan_amount_negative_value(self):
@@ -151,8 +151,38 @@ class MortgageTests(TestCase):
       # Assert
       self.assertEqual(mortgage._Mortgage__loan_amount, loan_amount)
 
+    """
+    Test case for Rate Accessor and Mutator
 
+    1. Modify the Rate to one of the possible MortgageRate enum values and verify results.
+    2. Modify the Rate to a value that is not of MortgageRate enum type and verify results.
+    """
 
+    #1
+    def test_rate_valid_rate_value(self):
+        # Arrange
+      loan_amount = 5000
+      rate = "FIXED_5" 
+      frequency = "BI_WEEKLY"
+      amortization = 10
 
-
+      
+        # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+        # Assert
+      self.assertEqual(mortgage._Mortgage__rate, MortgageRate.FIXED_5)
     
+    #2
+    def test_rate_invalid_rate_value(self):
+      # Arrange
+      loan_amount = 5000
+      rate = "INVALID" 
+      frequency = "BI_WEEKLY"
+      amortization = 10
+      
+      expected = "Rate provided is invalid."
+      # Act
+      with self.assertRaises(ValueError) as context:
+            Mortgage(loan_amount, rate, frequency, amortization)
+      # Assert
+      self.assertEqual(expected, str(context.exception))
