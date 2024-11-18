@@ -401,3 +401,22 @@ class MortgageTests(TestCase):
       actual_output = str(mortgage)
         # Assert
       self.assertEqual(actual_output, expected_result)
+
+      ## Test case for mortgage representation in __repr__
+
+    def test_repr_valid_return(self):
+      # Arrange
+      loan_amount = 682912.43
+      rate = "FIXED_1"
+      amortization = 30 
+      frequency = "MONTHLY"
+
+      expected_output = "Mortgage(682912.43, 0.0599, 12, 30)"
+
+      # Act
+      mortgage = Mortgage(loan_amount, rate, frequency, amortization)
+      actual_output= repr(mortgage)
+      # Assert
+      self.assertEqual(actual_output, expected_output)
+
+

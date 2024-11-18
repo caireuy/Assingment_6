@@ -194,7 +194,7 @@ class Mortgage:
         """
         Returns a string representation of Mortgage object
         Returns:
-            str: 
+            str: representation of Mortgage object
                 format: 
                     Mortgage Amount: loan amount
                     Rate: mortgage rate value
@@ -217,4 +217,15 @@ class Mortgage:
                 + f"\nAmortization: {self.__amortization}"
                 + f"\nFrequency: {frequency_as_str} -- "
                 + f"Calculated Payment: ${self.calculate_payment():,.2f}")
-            
+        
+    def __repr__(self):
+        """
+        Representation of Mortgage to display data
+
+        Returns:
+            str: Representation of Mortgage to display data
+                Format:
+                    Mortgage({loan-amount}, {interest-rate}, {frequency}, {amortization})
+
+        """
+        return f"Mortgage({self.__loan_amount}, {self.__rate.value}, {self.__frequency.value}, {self.__amortization})"
